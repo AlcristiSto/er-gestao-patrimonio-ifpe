@@ -27,5 +27,3 @@ O foco da aplicação é modernizar o controle de bens móveis e imóveis, facil
 > **Nota:** Este projeto foi desenvolvido exclusivamente para fins acadêmicos na disciplina de Engenharia de Requisitos.
 
 -----
-
-**Deseja que eu ajude a escrever a descrição detalhada de algum Caso de Uso específico para este sistema?**
