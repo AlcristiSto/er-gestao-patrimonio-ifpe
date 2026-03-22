@@ -14,9 +14,13 @@ O foco da aplicação é modernizar o controle de bens móveis e imóveis, facil
 
 ## 👥 Equipe
 
-  * **Membro 1** - [GitHub](https://www.google.com/search?q=https://github.com/seu-user)
-  * **Membro 2** - [GitHub](https://www.google.com/search?q=https://github.com/seu-user)
-  * **Membro 3** - [GitHub](https://www.google.com/search?q=https://github.com/seu-user)
+  * **Allan Cristian Santos do Nascimento** - [GitHub](https://github.com/AlcristiSto)
+  * **Artur Luís Vieira de Melo Bôa-Viagem** - [GitHub](https://github.com/artur-boa-viagem)
+  * **Franklin Amaral** - [GitHub](https://github.com/franklinamrl)
+  * **Marcos Nascimento** - [GitHub](https://github.com/mvrcost)
+  * **Maria Clara Albuquerque Moura** - [GitHub](https://github.com/mariaclara-moura)
+  * **Maria Isabela da Cruz Ribeiro** - [GitHub](https://github.com/engisaribeiro)
+  * **Pedro Henrique Laureano Novaes**
 
 ## 📚 Referências
 
