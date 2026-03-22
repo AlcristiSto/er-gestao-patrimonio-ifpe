@@ -14,12 +14,12 @@ O foco da aplicação é modernizar o controle de bens móveis e imóveis, facil
 
 ## 👥 Equipe
 
-  * **Allan Cristian Santos do Nascimento** - [GitHub](https://github.com/AlcristiSto)
-  * **Artur Luís Vieira de Melo Bôa-Viagem** - [GitHub](https://github.com/artur-boa-viagem)
-  * **Franklin Amaral** - [GitHub](https://github.com/franklinamrl)
-  * **Marcos Nascimento** - [GitHub](https://github.com/mvrcost)
-  * **Maria Clara Albuquerque Moura** - [GitHub](https://github.com/mariaclara-moura)
-  * **Maria Isabela da Cruz Ribeiro** - [GitHub](https://github.com/engisaribeiro)
+  * **Allan Cristian Santos do Nascimento** - [GitHub - AlcristiSto](https://github.com/AlcristiSto)
+  * **Artur Luís Vieira de Melo Bôa-Viagem** - [GitHub - artur-boa-viagem](https://github.com/artur-boa-viagem)
+  * **Franklin Amaral** - [GitHub - franklinamrl](https://github.com/franklinamrl)
+  * **Marcos Nascimento** - [GitHub - mvrcost](https://github.com/mvrcost)
+  * **Maria Clara Albuquerque Moura** - [GitHub - mariaclara-moura](https://github.com/mariaclara-moura)
+  * **Maria Isabela da Cruz Ribeiro** - [GitHub - engisaribeiro](https://github.com/engisaribeiro)
   * **Pedro Henrique Laureano Novaes**
 
 ## 📚 Referências
