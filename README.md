@@ -1,33 +1,66 @@
-# Gestão de Patrimônio - IFPE 🏛️
+# PatriMap · IFPE
 
-## 📝 Sobre o Projeto
+Sistema de mapeamento patrimonial para padronização de nomenclaturas via CATMAT.
 
-Este projeto tem como objetivo o levantamento, análise e documentação dos requisitos para um sistema de **Gestão de Patrimônio** destinado ao **Instituto Federal de Educação, Ciência e Tecnologia de Pernambuco (IFPE)**.
+## Requisitos
 
-O foco da aplicação é modernizar o controle de bens móveis e imóveis, facilitando processos de inventário, transferências entre setores, baixas de equipamentos e auditorias, garantindo conformidade com as normas da administração pública.
+- Node.js 18+
+- Chave de API do [groq](https://console.groq.com/keys)
 
-## 🎯 Escopo do Sistema
+## Configuração
 
+```bash
+# 1. Instale as dependências
+npm install
 
-## 🛠️ Artefatos de Engenharia de Requisitos
+# 2. Crie o arquivo .env a partir do template
+cp .env.example .env
 
+# 3. Edite o .env e insira sua chave
+# VITE_GOOGLE_API_KEY=sua_chave_aqui
+```
 
-## 👥 Equipe
+## Rodando localmente
 
-  * **Allan Cristian Santos do Nascimento** - [GitHub - AlcristiSto](https://github.com/AlcristiSto)
-  * **Artur Luís Vieira de Melo Bôa-Viagem** - [GitHub - artur-boa-viagem](https://github.com/artur-boa-viagem)
-  * **Franklin Amaral** - [GitHub - franklinamrl](https://github.com/franklinamrl)
-  * **Marcos Nascimento** - [GitHub - mvrcost](https://github.com/mvrcost)
-  * **Maria Clara Albuquerque Moura** - [GitHub - mariaclara-moura](https://github.com/mariaclara-moura)
-  * **Maria Isabela da Cruz Ribeiro** - [GitHub - engisaribeiro](https://github.com/engisaribeiro)
-  * **Pedro Henrique Laureano Novaes**
+```bash
+npm run dev
+```
 
-## 📚 Referências
+Acesse `http://localhost:5173`
 
- 
+## Build para produção
 
------
+```bash
+npm run build
+npm run preview
+```
 
-> **Nota:** Este projeto foi desenvolvido exclusivamente para fins acadêmicos na disciplina de Engenharia de Requisitos.
+## Como usar
 
------
+1. **Upload** — envie um CSV ou XLSX com os bens patrimoniais
+2. **Configurar** — selecione a coluna que contém a descrição do bem
+3. **Processar** — aguarde o mapeamento via Gemini (Google AI)
+4. **Resultado** — visualize e baixe a planilha com mapeamento CATMAT
+
+## Privacidade (conforme análise LINDDUN/PLOT4AI)
+
+- Processamento em memória — nenhum dado é gravado em disco ou banco
+- Comunicação via TLS (HTTPS)
+- Sessões isoladas por usuário
+- Logs de erro sem conteúdo de células (apenas tipo de erro)
+
+## Estrutura
+
+```
+patrimap/
+├── src/
+│   ├── App.jsx       # Componente principal (UI + fluxo)
+│   ├── groq.js     # Serviço de chamada à API do Google AI Studio
+│   ├── main.jsx      # Entry point React
+│   └── index.css     # Reset e variáveis CSS
+├── .env.example      # Template de configuração
+├── .gitignore
+├── index.html
+├── package.json
+└── vite.config.js
+```
