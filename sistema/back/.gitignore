@@ -1,0 +1,7 @@
+node_modules
+dist
+coverage
+.env
+exports
+*.log
+data/catmat/carga.json

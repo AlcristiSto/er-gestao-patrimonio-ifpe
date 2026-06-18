@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "react-vite-expert": {
+      "source": "questfortech-investments/claude-code-skills",
+      "sourceType": "github",
+      "skillPath": "react-vite-expert/SKILL.md",
+      "computedHash": "d8c575facdc8b9a6d55baa7eb35aad79ff50eb5dc1c6b8e15d36fc34e0f43ef5"
+    }
+  }
+}

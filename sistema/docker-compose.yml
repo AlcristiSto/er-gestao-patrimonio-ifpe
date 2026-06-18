@@ -1,0 +1,80 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    restart: unless-stopped
+    ports:
+      - "${MONGO_PORT:-27017}:27017"
+    environment:
+      MONGO_INITDB_DATABASE: "${MONGO_DATABASE:-patrimonio}"
+      MONGO_DATABASE: "${MONGO_DATABASE:-patrimonio}"
+      MONGO_CATMAT_COLLECTION: "${MONGO_CATMAT_COLLECTION:-catmat}"
+    volumes:
+      - mongodb_data:/data/db
+      - ./back/docker/mongo/init/01-load-catmat.js:/docker-entrypoint-initdb.d/01-load-catmat.js:ro
+      - ./back/data/catmat/carga.json:/carga/carga.json:ro
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "mongosh --quiet --eval 'db.adminCommand({ ping: 1 }).ok' localhost:27017/test | grep 1",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  back:
+    image: node:22-bookworm-slim
+    working_dir: /app
+    restart: unless-stopped
+    env_file:
+      - ./back/.env
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    ports:
+      - "${BACK_PORT:-3000}:3000"
+    environment:
+      PORT: 3000
+      MONGO_HOST: "mongodb"
+      MONGO_URI: "mongodb://mongodb:27017"
+      MONGO_PORT: 27017
+      MONGO_DATABASE: "${MONGO_DATABASE:-patrimonio}"
+      MONGO_CATMAT_COLLECTION: "${MONGO_CATMAT_COLLECTION:-catmat}"
+      CATMAT_MAX_CANDIDATES: "${CATMAT_MAX_CANDIDATES:-20}"
+      CATMAT_MIN_CONFIDENCE: "${CATMAT_MIN_CONFIDENCE:-0.75}"
+      CATMAT_AUTO_SELECT_HIGH_CONFIDENCE: "${CATMAT_AUTO_SELECT_HIGH_CONFIDENCE:-false}"
+      CATMAT_OUTPUT_UG: "${CATMAT_OUTPUT_UG:-158000}"
+      CATMAT_OUTPUT_CONTA: "${CATMAT_OUTPUT_CONTA:-111111111}"
+      CATMAT_OUTPUT_CHAMADO: "${CATMAT_OUTPUT_CHAMADO:-4444444444}"
+      CATMAT_EXPORT_DIR: "/app/exports"
+      CATMAT_MAX_UPLOAD_BYTES: "${CATMAT_MAX_UPLOAD_BYTES:-26214400}"
+      CATMAT_LLM_MODEL: "${CATMAT_LLM_MODEL:-gpt-4.1-mini}"
+      CATMAT_LLM_CONCURRENCY: "${CATMAT_LLM_CONCURRENCY:-3}"
+      CATMAT_LLM_TIMEOUT_MS: "${CATMAT_LLM_TIMEOUT_MS:-30000}"
+      CATMAT_LLM_RETRY_ATTEMPTS: "${CATMAT_LLM_RETRY_ATTEMPTS:-2}"
+    volumes:
+      - ./back:/app
+      - back_node_modules:/app/node_modules
+    command: sh -c "npm ci && node scripts/wait-for-mongo.js && npm run start:dev"
+
+  front:
+    image: node:22-bookworm-slim
+    working_dir: /app
+    restart: unless-stopped
+    depends_on:
+      - back
+    ports:
+      - "${FRONT_PORT:-5173}:5173"
+    environment:
+      VITE_API_BASE_URL: "http://localhost:${BACK_PORT:-3000}"
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - ./front:/app
+      - front_node_modules:/app/node_modules
+    command: sh -c "npm ci && npm run dev -- --host 0.0.0.0 --port 5173"
+
+volumes:
+  mongodb_data:
+  back_node_modules:
+  front_node_modules:

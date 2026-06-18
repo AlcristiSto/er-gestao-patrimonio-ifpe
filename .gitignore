@@ -1,3 +1,9 @@
 node_modules
 dist
+coverage
 .env
+*.log
+exports
+.vite
+.agents
+sistema/back/data/catmat/carga.json
